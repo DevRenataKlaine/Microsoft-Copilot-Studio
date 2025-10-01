@@ -1,6 +1,5 @@
 # Microsoft Copilot Studio
 
-Status: Concluído
 
 # Análise Estratégica da Microsoft Power Platform e Suas Aplicações Empresariais
 
