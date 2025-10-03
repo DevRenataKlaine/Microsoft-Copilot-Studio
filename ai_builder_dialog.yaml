@@ -1,0 +1,39 @@
+kind: AdaptiveDialog
+modelDescription: |-
+  buscar informações de ai builder
+  o que é ai builder
+  onde encontro informações da ferramenta de AI da Power Plataform
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: mAKDDz
+      userInput: =System.Activity.Text
+      additionalInstructions: "Buscar dados do AI Builder com base na pergunta do usuário: {System.Activity.Text}"
+
+    - kind: ConditionGroup
+      id: conditionGroup_Z2caSg
+      conditions:
+        - id: conditionItem_CY0dsJ
+          condition: =!IsBlank(System.Activity.Text)
+          actions:
+            - kind: BeginDialog
+              id: AEpFUs
+              dialog: cr0b4_agenteDoCopilotStudio.topic.AIBuildertopics
+
+      elseActions:
+        - kind: SendActivity
+          id: sendActivity_nq4W6Q
+          activity: |-
+            Olá, {System.User.PrincipalName}. Desculpa, mas não foi possível encontrar a resposta que você estava esperando.
+
+            Você pode acessar mais informações em **www.learn.microsoft.com/pt-br/microsoft-copilot-studio/** .
+
+    - kind: SendActivity
+      id: sendActivity_qbGHEY
+      activity: Tópico de AI Builder encerrado!
+
+inputType: {}
+outputType: {}
